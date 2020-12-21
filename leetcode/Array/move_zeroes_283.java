@@ -12,7 +12,7 @@ package Array;
  * 按照快的思想，取0为基准点，不等于于0的放左侧，等于于0的放右侧
  * 则左指针的左侧为不等于0的值，右侧为等于0的值，右指针不断右移遍历
  */
-public class Q283MoveZeroes {
+public class move_zeroes_283 {
 
   public void moveZeroes(int[] nums) {
     int l = 0, r = 0, h = nums.length - 1;

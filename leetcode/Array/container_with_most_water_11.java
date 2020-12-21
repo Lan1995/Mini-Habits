@@ -14,7 +14,7 @@ package Array;
  * 思路二：控制变量法 公式:Min(ai,aj) * (j-i),首先保持(j-i)最大，然后逐渐逼近 没想到的点: 如何判断移动指针方向 假设Min(ai,aj)=ai即，ai<aj时候，:Min(ai,aj) * (j-i) =
  * ai*(j-i), 如果此时移动右指针,结果为aj1 当aj1 >= aj时:Min(ai,aj1) = ai 当aj1 < aj时，Min(ai,aj1) <=ai 此时距离j-i-1，面积始终变小
  */
-public class Q11 {
+public class container_with_most_water_11 {
 
 
   public int maxArea(int[] height) {
