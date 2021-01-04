@@ -1,5 +1,8 @@
 package List;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
  *
@@ -35,17 +38,41 @@ public class linked_list_cycle_ii_142 {
      * @return
      */
     public ListNode detectCycle(ListNode head) {
-        if (head == null) {
+        if(head == null) {
+            return null;
+        }
+        ListNode slow = head,fast = head;
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if(fast == slow) {
+                ListNode start = head;
+                while (start != slow) {
+                    start = start.next;
+                    slow = slow.next;
+                }
+                return start;
+            }
+
+        }
+
+        return null;
+    }
+
+
+    public ListNode detectCycle2(ListNode head) {
+        if(head == null) {
             return null;
         }
         ListNode slow = head,fast = head;
         while (fast != null) {
-            if(fast.next == null ){
+            if(fast.next != null) {
+                fast = fast.next.next;
+            }else {
                 return null;
             }
             slow = slow.next;
-            fast = fast.next.next;
-            if(slow == fast) {
+            if(fast == slow) {
                 ListNode start = head;
                 while (start != slow) {
                     start = start.next;
@@ -56,6 +83,41 @@ public class linked_list_cycle_ii_142 {
         }
         return null;
     }
+
+    public ListNode detectCycle3(ListNode head) {
+        if(head == null) {
+            return null;
+        }
+        Set<ListNode> visited = new HashSet<>();
+        ListNode pos = head;
+        while (pos != null) {
+            if (visited.contains(pos)) {
+                return pos;
+            }else {
+                visited.add(pos);
+            }
+            pos = pos.next;
+        }
+        return null;
+    }
+
+    public boolean hasCycle(ListNode head) {
+        if (head == null || head.next == null) {
+            return false;
+        }
+        ListNode slow = head;
+        ListNode fast = head.next;
+        while (slow != fast) {
+            if (fast == null || fast.next == null) {
+                return false;
+            }
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return true;
+    }
+
+
 
     class ListNode {
         int val;
