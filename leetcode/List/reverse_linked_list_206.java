@@ -24,7 +24,7 @@ public class reverse_linked_list_206 {
      * @param head
      * @return
      */
-    public ListNode reverseList(ListNode head) {
+    public static ListNode reverseList(ListNode head) {
         ListNode cur = head,pre = null;
         while (cur != null){
             ListNode tmp = cur.next;
@@ -59,12 +59,22 @@ public class reverse_linked_list_206 {
     }
 
 
-    public class ListNode {
+    public static class ListNode {
         int val;
         ListNode next;
 
         ListNode(int x) {
             val = x;
         }
+
+        public ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
+    }
+
+    public static void main(String[] args) {
+        ListNode listNode = new ListNode(1,new ListNode(2,new ListNode(3,new ListNode(4,null))));
+        reverseList(listNode);
     }
 }
