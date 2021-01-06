@@ -33,43 +33,42 @@ public class reverse_nodes_in_k_group_25 {
      * @return
      */
     public static ListNode reverseKGroup(ListNode head, int k) {
-        int length = 0;
-        ListNode step = head;
-        while (step != null) {
-            step = step.next;
-            length++;
-        }
-        if(length < k) {
-            return null;
-        }
-        int cycle = length/k;
-        int count = 0;
-        ListNode dumpNode = new ListNode(0,head);
+        ListNode dump = new ListNode(0,head);
+        ListNode pre = dump,end = dump;
+        while (head != null) {
+            for (int i = 0; i < k && end != null; i++) {
+                end = end.next;
+            }
+            if(end == null) break;
+            ListNode start = pre.next;
+            ListNode next = end.next;
 
-        ListNode cur = dumpNode.next;
-        ListNode pre = dumpNode;
-        while (count < cycle) {
-            reversList(pre,cur,k);
-            count = count + k;
+            //dump->1->2->3->4->5
+            end.next = null;
+            //dump->1->2->3  4->5
+            //dump->3->2->1->4->5
+            pre.next = reversList(start);
+            start.next = next;
+            pre = start;
+            end = start;
+
         }
-        return dumpNode.next;
+        return dump.next;
     }
 
-
-    public static  ListNode reversList(ListNode pre,ListNode cur,int k){
-        int count = 0;
-        ListNode oldPre = null;
-        ListNode oldCur = cur;
-        while (count < k) {
-            ListNode tmp = oldCur.next;
-            oldCur.next = oldPre;
-            oldPre = oldCur;
-            oldCur = tmp;
-            count++;
+    public static ListNode reversList(ListNode head){
+        ListNode pre = null;
+        ListNode cur = head;
+        while (cur != null) {
+            ListNode tmp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = tmp;
         }
-        pre.next = oldPre;
         return pre;
     }
+
+
 
 
     static class ListNode {
