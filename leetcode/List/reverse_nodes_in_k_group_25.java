@@ -35,40 +35,31 @@ public class reverse_nodes_in_k_group_25 {
     public static ListNode reverseKGroup(ListNode head, int k) {
         ListNode dump = new ListNode(0,head);
         ListNode pre = dump,end = dump;
-        while (head != null) {
-            for (int i = 0; i < k && end != null; i++) {
-                end = end.next;
-            }
+        while(end.next != null) {
+            for(int i=0;i<k && end != null;i++) end = end.next;
             if(end == null) break;
             ListNode start = pre.next;
             ListNode next = end.next;
-
-            //dump->1->2->3->4->5
             end.next = null;
-            //dump->1->2->3  4->5
-            //dump->3->2->1->4->5
-            pre.next = reversList(start);
+            pre.next = reverseList(start);
             start.next = next;
             pre = start;
             end = start;
-
         }
         return dump.next;
     }
 
-    public static ListNode reversList(ListNode head){
+    public static ListNode reverseList(ListNode head) {
         ListNode pre = null;
         ListNode cur = head;
-        while (cur != null) {
-            ListNode tmp = cur.next;
+        while(cur != null) {
+            ListNode next = cur.next;
             cur.next = pre;
             pre = cur;
-            cur = tmp;
+            cur = next;
         }
         return pre;
     }
-
-
 
 
     static class ListNode {
