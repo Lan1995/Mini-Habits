@@ -42,13 +42,13 @@ import java.util.LinkedList;
  * 思路：
  * 检索常数空间 -> push/pop 时计算最小值
  */
-public class min_stack_155 {
+public class min_stack_155_1 {
 
   Deque<Integer> stack;
   Integer min;
 
   /** initialize your data structure here. */
-  public min_stack_155() {
+  public min_stack_155_1() {
     stack = new LinkedList<>();
     min =Integer.MAX_VALUE;
   }
@@ -83,7 +83,7 @@ public class min_stack_155 {
   }
 
   public static void main(String[] args) {
-    min_stack_155 minStack = new min_stack_155();
+    min_stack_155_1 minStack = new min_stack_155_1();
     minStack.push(-2);
     minStack.push(0);
     minStack.push(-3);
