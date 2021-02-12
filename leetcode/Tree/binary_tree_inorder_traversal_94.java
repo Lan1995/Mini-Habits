@@ -1,6 +1,8 @@
 package Tree;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 public class binary_tree_inorder_traversal_94 {
@@ -38,6 +40,41 @@ public class binary_tree_inorder_traversal_94 {
         inorder(root.left,list);
         list.add(root.val);
         inorder(root.right,list);
+    }
+
+    public static List<Integer> inorderTraversal3(TreeNode root) {
+        //decision child node
+        List<Integer> list = new ArrayList<>();
+        Deque<TreeNode> stack = new LinkedList<>();
+        while (root != null || !stack.isEmpty()) {
+            //first left
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            list.add(root.val);
+            root = root.right;
+        }
+        return list;
+    }
+
+    public static List<Integer> inorderTraversal4(TreeNode root) {
+        //decision child node
+        List<Integer> list = new ArrayList<>();
+        Deque<TreeNode> stack = new LinkedList<>();
+        while (root != null || !stack.isEmpty()) {
+            //first left
+            if(root != null) {
+                stack.push(root);
+                root = root.left;
+            }else {
+                TreeNode temp = stack.pop();
+                list.add(temp.val);
+                root =temp.right;
+            }
+        }
+        return list;
     }
 
     public static void main(String[] args) {
