@@ -1,8 +1,8 @@
 package Tree;
 
- class TreeNode {
-    int val;
-    TreeNode left,right;
+public class TreeNode {
+    public int val;
+    public TreeNode left,right;
     TreeNode(){}
     TreeNode(int val) {this.val = val;}
      public TreeNode(int val, TreeNode left, TreeNode right) {
