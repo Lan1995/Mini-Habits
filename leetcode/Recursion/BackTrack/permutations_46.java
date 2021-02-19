@@ -9,6 +9,7 @@ public class permutations_46 {
         if (nums == null || nums.length <= 0) return res;
         LinkedList<Integer> path = new LinkedList<>();
         Set<Integer> memo = new HashSet<>();
+        Arrays.sort(nums);
         backTrack(nums, path, memo);
         return res;
     }
@@ -23,11 +24,9 @@ public class permutations_46 {
             if (!memo.contains(nums[i])) {
                 path.add(nums[i]);
                 memo.add(nums[i]);
-                System.out.println("  递归之前 => " + path);
                 backTrack(nums, path, memo);
                 memo.remove(nums[i]);
                 path.removeLast();
-                System.out.println("  递归之前 => " + path);
             }
 
         }
