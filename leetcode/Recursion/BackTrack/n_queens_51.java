@@ -1,9 +1,68 @@
 package Recursion.BackTrack;
 
-/**
- * @author qing.lan, {@literal <qing.lan@leyantech.com>}
- * @date 2021-02-22.
- */
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class n_queens_51 {
+
+  List<List<String>> res = new ArrayList<>();
+
+  public List<List<String>> solveNQueens(int n) {
+    char[][] board = new char[n][n];
+    for (char[] row : board) {
+      Arrays.fill(row, '.');
+    }
+    List<String> path = new ArrayList<>();
+    backTrack(board, 0);
+    return res;
+  }
+
+  private void backTrack(char[][] board, int row) {
+    if (row == board.length) {
+      List<String> path = new ArrayList<>();
+      for (int i = 0; i < board.length; i++) {
+        path.add(new String(board[i]));
+      }
+      res.add(path);
+      return;
+    }
+    int len = board[row].length;
+    for (int col = 0; col < len; col++) {
+      if (!isValid(board, row, col)) {
+        continue;
+      }
+      board[row][col] = 'Q';
+      backTrack(board, row + 1);
+      board[row][col] = '.';
+    }
+  }
+
+  private boolean isValid(char[][] board, int row, int col) {
+    for (int i = 0; i < row; i++) {
+      if (board[i][col] == 'Q') {
+        return false;
+      }
+    }
+
+    for (int i = row - 1, j = col + 1; i >= 0 && j < board.length; i--, j++) {
+      if (board[i][j] == 'Q') {
+        return false;
+      }
+    }
+
+    for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+      if (board[i][j] == 'Q') {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  public static void main(String[] args) {
+    n_queens_51 test = new n_queens_51();
+    System.out.println(test.solveNQueens(4));
+  }
 
 }
