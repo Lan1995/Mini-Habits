@@ -102,6 +102,16 @@ def divideConquer(param)
 ```
 
 ## BFS
+```
+def bfs(TreeNode root)
+    queue = []
+    queue.offer(root)
+    while !queue
+        node = queue.pop
+        process(node)
+        for childNode in node:
+            queue.offer(childNode)
+```
 
 ## 贪心
 
