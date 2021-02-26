@@ -11,21 +11,27 @@ public class word_ladder_127 {
         Deque<String> queue = new ArrayDeque<>();
         Set<String> visited = new HashSet<>();
         queue.offer(beginWord);
-        List<Character> changeChar = new ArrayList<>();
+        Set<Character> changeCharSet = new HashSet<>();
         for (Character character : beginWord.toCharArray()) {
-            changeChar.add(character);
+            changeCharSet.add(character);
+        }
+
+        for (Character character : endWord.toCharArray()) {
+            changeCharSet.add(character);
         }
         wordList.forEach(e -> {
             for (Character character : e.toCharArray()) {
-                changeChar.add(character);
+                changeCharSet.add(character);
             } 
         });
+        List<Character> changeChar = new ArrayList<>(changeCharSet);
+        
         while(!queue.isEmpty()) {
             int len = queue.size();
             for (int i = 0; i < len; i++) {
                 String node = queue.poll();
                 System.out.println("step:" + step +",node:" + node);
-                if(node.equals(endWord)) return step;           
+                if(node.equals(endWord)) return step + 1;           
                 for (int j = 0; j < node.toCharArray().length; j++) {
                     for (int k = 0; k < changeChar.size(); k++) {
                         char[] old = node.toCharArray();
@@ -36,9 +42,9 @@ public class word_ladder_127 {
                             visited.add(newNode);
                         }     
                     }
-                }  
-                step++;            
+                }             
             }
+            step++; 
         }
         return 0;
     }
