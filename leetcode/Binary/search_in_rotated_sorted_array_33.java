@@ -17,9 +17,10 @@ public class search_in_rotated_sorted_array_33 {
             if(nums[mid -1] > nums[left]) {
                 if(target > nums[mid -1]) {
                     left = mid + 1;
-                }else
+                }else{}
             }
         }
+        return -1;
     }
 
 

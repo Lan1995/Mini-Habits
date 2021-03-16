@@ -1,6 +1,5 @@
 package DP;
 
-import jdk.jshell.execution.Util;
 
 public class house_robber_198 {
     //1. 明确状态
@@ -27,7 +26,7 @@ public class house_robber_198 {
         
     }
 
-    public int rob(int[] nums) {
+    public int rob2(int[] nums) {
         if(null == nums || nums.length == 0) return 0;
         if(nums.length == 1) return nums[0];
         int[] dp = new int[nums.length];
