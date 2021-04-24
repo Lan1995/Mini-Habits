@@ -1,14 +1,12 @@
 package Tree.BFS;
 
+import Tree.TreeNode;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Deque;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.List;
-
-import Tree.TreeNode;
 
 public class binary_tree_level_order_traversal_102 {
 
@@ -38,7 +36,7 @@ public class binary_tree_level_order_traversal_102 {
         queue.offer(root);
         res.add(Arrays.asList(root.val));
         while(!queue.isEmpty()) {
-            var size = queue.size();
+            int size = queue.size();
             List<Integer> ans = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 TreeNode node = queue.pop();
