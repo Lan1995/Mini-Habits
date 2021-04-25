@@ -5,11 +5,6 @@ import com.google.common.hash.Funnels;
 
 import java.util.stream.IntStream;
 
-
-/**
- * @author qing.lan, {@literal <qing.lan@leyantech.com>}
- * @date 2021-04-24.
- */
 public class BloomFilterTest {
 
   private static BloomFilter<Integer> bloomFilter;

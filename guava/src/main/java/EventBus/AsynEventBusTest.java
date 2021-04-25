@@ -11,11 +11,6 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-
-/**
- * @author qing.lan, {@literal <qing.lan@leyantech.com>}
- * @date 2021-04-10.
- */
 public class AsynEventBusTest {
 
   public static void main(String[] args) {
